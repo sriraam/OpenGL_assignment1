@@ -159,12 +159,12 @@ void init(void)
 
 	/* Setup the view of the cube. */
 	glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+    //glLoadIdentity();
 		glOrtho(-5, 5, -5, 5, -5, 10);
 		//glPushMatrix();
 	glMatrixMode(GL_MODELVIEW);
 	
-	glLoadIdentity();
+	//glLoadIdentity();
 	
 	gluLookAt(0.0, 0.0, 5.0,  /* eye is at (0,0,5) */
 		0.0, 0.0, 0.0,      /* center is at (0,0,0) */
@@ -174,7 +174,8 @@ void init(void)
 	glTranslatef(0.0, 0.0, 1.0);
 	glRotatef(60, 1.0, 0.0, 0.0);
 	glRotatef(-45, 0.0, 0.0, 1.0);
-	glPushMatrix();
+
+	//glPushMatrix();
 }
 void callback_menu() {
 	int sub_menu = glutCreateMenu(menu);
@@ -190,7 +191,8 @@ void callback_menu() {
 void handleKeys(unsigned char key, int x, int y)
 {
 	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
+	//glPopMatrix();
+	//glPushMatrix();
 	//glLoadIdentity();
 	//If the user presses q
 	if (key == 'q')
@@ -213,6 +215,8 @@ void handleKeys(unsigned char key, int x, int y)
 		//glRotatef(1, 0.0, 0.0, 1.0);
 	}
 	
+	
+	//glPopMatrix();
 	//glMatrixMode(GL_MODELVIEW);
   //glLoadIdentity();
 	if (key == 'e') {
@@ -222,10 +226,10 @@ void handleKeys(unsigned char key, int x, int y)
 			0.0, 0.0, 0.0,      /* center is at (0,0,0) */
 			0.0, 1.0, 0);      /* up is in positive Y direction */
 	}
-	glPushMatrix();
+	//glPushMatrix();
 	if (key == 'r') {
 		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
+		glLoadIdentity();//important to avoid accumulation of matrix
 		
 		if (PROJECTION == 0) {
 			PROJECTION = 1;//perspective
